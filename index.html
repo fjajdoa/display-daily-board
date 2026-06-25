@@ -36,22 +36,25 @@
   .empty { color:var(--muted); text-align:center; margin-top:40px; }
   footer { margin-top:40px; color:var(--muted); font-size:12px; text-align:center; }
   .item { display:flex; flex-direction:column; }
-  .rate { display:flex; align-items:center; gap:3px; margin-top:5px; padding:2px 2px 0; }
+  /* 评分控件默认隐藏；只有带密钥链接(body.admin)才显示 —— 员工看到的是干净看板 */
+  .rate { display:none; align-items:center; gap:3px; margin-top:5px; padding:2px 2px 0; }
   .rate .lab { color:var(--muted); font-size:12px; margin-right:5px; }
   .star { cursor:pointer; color:#3a4658; font-size:18px; line-height:1.1; user-select:none; transition:color .1s; }
   .star.on { color:#f5b301; }
   .star:hover { color:#f5b301; }
-  .expbar { display:flex; justify-content:flex-end; margin-top:14px; }
+  .expbar { display:none; justify-content:flex-end; margin-top:14px; }
   .expbtn { background:var(--card); color:var(--fg); border:1px solid var(--line);
              border-radius:8px; padding:6px 12px; font-size:13px; cursor:pointer; }
   .expbtn:hover { border-color:var(--accent); }
+  body.admin .rate { display:flex; }
+  body.admin .expbar { display:flex; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>📡 显示行业每日资讯</h1>
-    <div class="sub">2026年06月25日 · 共 19 条 · 生成于 2026-06-25 10:29<br>采集情况 — 迪显 DISCIEN:4, 液晶网:40, 集邦 TrendForce:5, LEDinside:40, CINNO:12, 半导体行业观察:19, 中国电子报:25</div>
+    <div class="sub">2026年06月25日 · 共 19 条 · 生成于 2026-06-25 10:42<br>采集情况 — 迪显 DISCIEN:4, 液晶网:40, 集邦 TrendForce:5, LEDinside:40, CINNO:12, 半导体行业观察:19, 中国电子报:25</div>
   </header>
   <div class="filters"><button class="f active" data-f="all">全部</button><button class="f" data-f="competitor">🏭 竞争对手动态</button><button class="f" data-f="event">📰 行业大事件与趋势</button></div>
   
@@ -208,29 +211,36 @@
     blocks.forEach(bl=>bl.style.display=(f==='all'||bl.dataset.section===f)?'':'none');
   });
 
-  // 1-5 星质量评分：存浏览器本地；FEEDBACK_URL 填了则点星同时回传后端（方案B）
-  const FEEDBACK_URL = "";
-  const RPT_DATE = "2026年06月25日";
-  function paint(r,v){ r.querySelectorAll('.star').forEach(s=>s.classList.toggle('on',(+s.dataset.v)<=v)); }
-  document.querySelectorAll('.rate').forEach(r=>{
-    const id=r.dataset.id;
-    paint(r, +(localStorage.getItem('rate_'+id)||0));
-    r.querySelectorAll('.star').forEach(s=>s.onclick=()=>{
-      const v=+s.dataset.v;
-      localStorage.setItem('rate_'+id, v); paint(r, v);
-      if(FEEDBACK_URL){ fetch(FEEDBACK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({date:RPT_DATE,score:v,title:r.dataset.title,link:id})}).catch(()=>{}); }
-    });
-  });
-  document.getElementById('exportBtn').onclick=()=>{
-    let lines=[];
+  // 仅本人可评分：URL 带密钥(?k=ADMIN_KEY 或 #ADMIN_KEY)才显示并启用评分；
+  // 员工用普通链接打开 = 干净看板、无评分控件。
+  const ADMIN_KEY = "ywq2026";
+  const _qp = new URLSearchParams(location.search);
+  if (ADMIN_KEY && (_qp.get('k') === ADMIN_KEY || location.hash.slice(1) === ADMIN_KEY)) {
+    document.body.classList.add('admin');
+    const FEEDBACK_URL = "";
+    const RPT_DATE = "2026年06月25日";
+    const paint=(r,v)=>r.querySelectorAll('.star').forEach(s=>s.classList.toggle('on',(+s.dataset.v)<=v));
     document.querySelectorAll('.rate').forEach(r=>{
-      const v=localStorage.getItem('rate_'+r.dataset.id);
-      if(v) lines.push('★'+v+'  '+r.dataset.title);
+      const id=r.dataset.id;
+      paint(r, +(localStorage.getItem('rate_'+id)||0));
+      r.querySelectorAll('.star').forEach(s=>s.onclick=()=>{
+        const v=+s.dataset.v;
+        localStorage.setItem('rate_'+id, v); paint(r, v);
+        if(FEEDBACK_URL){ fetch(FEEDBACK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({date:RPT_DATE,score:v,title:r.dataset.title,link:id})}).catch(()=>{}); }
+      });
     });
-    const txt = lines.length ? ('显示日报评分反馈 · '+RPT_DATE+'\n'+lines.join('\n')) : '还没有评分，先给标题点 ★';
-    if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(()=>alert('已复制 '+lines.length+' 条评分，粘贴到对话发给我即可')).catch(()=>prompt('复制下面文本发给我：', txt)); }
-    else prompt('复制下面文本发给我：', txt);
-  };
+    const eb=document.getElementById('exportBtn');
+    if(eb) eb.onclick=()=>{
+      let lines=[];
+      document.querySelectorAll('.rate').forEach(r=>{
+        const v=localStorage.getItem('rate_'+r.dataset.id);
+        if(v) lines.push('★'+v+'  '+r.dataset.title);
+      });
+      const txt = lines.length ? ('显示日报评分反馈 · '+RPT_DATE+'\n'+lines.join('\n')) : '还没有评分，先给标题点 ★';
+      if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(()=>alert('已复制 '+lines.length+' 条评分，粘贴到对话发给我即可')).catch(()=>prompt('复制下面文本发给我：', txt)); }
+      else prompt('复制下面文本发给我：', txt);
+    };
+  }
 </script>
 </body>
 </html>
