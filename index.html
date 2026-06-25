@@ -35,173 +35,106 @@
   .t-risk { background:var(--risk); } .t-good { background:var(--good); }
   .empty { color:var(--muted); text-align:center; margin-top:40px; }
   footer { margin-top:40px; color:var(--muted); font-size:12px; text-align:center; }
-  .item { display:flex; flex-direction:column; }
-  /* 评分控件默认隐藏；只有带密钥链接(body.admin)才显示 —— 员工看到的是干净看板 */
-  .rate { display:none; align-items:center; gap:3px; margin-top:5px; padding:2px 2px 0; }
-  .rate .lab { color:var(--muted); font-size:12px; margin-right:5px; }
-  .star { cursor:pointer; color:#3a4658; font-size:18px; line-height:1.1; user-select:none; transition:color .1s; }
-  .star.on { color:#f5b301; }
-  .star:hover { color:#f5b301; }
-  .expbar { display:none; justify-content:flex-end; margin-top:14px; }
-  .expbtn { background:var(--card); color:var(--fg); border:1px solid var(--line);
-             border-radius:8px; padding:6px 12px; font-size:13px; cursor:pointer; }
-  .expbtn:hover { border-color:var(--accent); }
-  body.admin .rate { display:flex; }
-  body.admin .expbar { display:flex; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>📡 显示行业每日资讯</h1>
-    <div class="sub">2026年06月25日 · 共 19 条 · 生成于 2026-06-25 10:42<br>采集情况 — 迪显 DISCIEN:4, 液晶网:40, 集邦 TrendForce:5, LEDinside:40, CINNO:12, 半导体行业观察:19, 中国电子报:25</div>
+    <div class="sub">2026年06月25日 · 共 20 条 · 生成于 2026-06-25 13:14<br>采集情况 — 迪显 DISCIEN:4, 液晶网:40, 集邦 TrendForce:5, LEDinside:40, CINNO:12, 半导体行业观察:20, 中国电子报:25</div>
   </header>
   <div class="filters"><button class="f active" data-f="all">全部</button><button class="f" data-f="competitor">🏭 竞争对手动态</button><button class="f" data-f="event">📰 行业大事件与趋势</button></div>
   
         <section class="block" data-section="competitor">
-          <h2>🏭 竞争对手动态 <span class="count">7</span></h2>
+          <h2>🏭 竞争对手动态 <span class="count">8</span></h2>
           <div class="cards">
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212604.html" target="_blank" rel="noopener">
-                <div class="card-title">惠科股份明日上市</div>
-                <div class="card-meta"><span class="date">2026-06-25</span><span class="src">液晶网</span><span class="comp">惠科 HKC</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212604.html" data-title="惠科股份明日上市"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260625-61950.html" target="_blank" rel="noopener">
-                <div class="card-title">首日爆涨1212%，京东方供应商臻宝科技正式上市</div>
-                <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span><span class="comp">京东方 BOE</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260625-61950.html" data-title="首日爆涨1212%，京东方供应商臻宝科技正式上市"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260625-61949.html" target="_blank" rel="noopener">
-                <div class="card-title">韩媒：三星显示、LG Display将供应9000万片iPhone 18 Pro系列手机面板</div>
-                <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span><span class="comp">三星显示 SDC</span><span class="comp">LG Display</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260625-61949.html" data-title="韩媒：三星显示、LG Display将供应9000万片iPhone 18 Pro系列手机面板"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212600.html" target="_blank" rel="noopener">
-                <div class="card-title">TCL华星子公司接手，华映这一参股公司福兆半导体卖了3,500万元</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span><span class="comp">TCL华星</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212600.html" data-title="TCL华星子公司接手，华映这一参股公司福兆半导体卖了3,500万元"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260624-61945.html" target="_blank" rel="noopener">
-                <div class="card-title">惠科南充M-LED芯片项目预计10月底完工</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">LEDinside</span><span class="comp">惠科 HKC</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260624-61945.html" data-title="惠科南充M-LED芯片项目预计10月底完工"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212580.html" target="_blank" rel="noopener">
-                <div class="card-title">群创4月获利年增超26倍</div>
-                <div class="card-meta"><span class="date">2026-06-23</span><span class="src">液晶网</span><span class="comp">群创 Innolux</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212580.html" data-title="群创4月获利年增超26倍"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-205323.html" target="_blank" rel="noopener">
-                <div class="card-title">总投资630亿元！国内首条！京东方第8.6代AMOLED生产线正式奠基</div>
-                <div class="card-meta"><span class="src">液晶网</span><span class="comp">京东方 BOE</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-205323.html" data-title="总投资630亿元！国内首条！京东方第8.6代AMOLED生产线正式奠基"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div></div>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212604.html" target="_blank" rel="noopener">
+              <div class="card-title">惠科股份明日上市</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">液晶网</span><span class="comp">惠科 HKC</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61954.html" target="_blank" rel="noopener">
+              <div class="card-title">惠科股份官宣：6月26日深交所主板上市</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span><span class="comp">惠科 HKC</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61950.html" target="_blank" rel="noopener">
+              <div class="card-title">首日爆涨1212%，京东方供应商臻宝科技正式上市</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span><span class="comp">京东方 BOE</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61949.html" target="_blank" rel="noopener">
+              <div class="card-title">韩媒：三星显示、LG Display将供应9000万片iPhone 18 Pro系列手机面板</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span><span class="comp">三星显示 SDC</span><span class="comp">LG Display</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212600.html" target="_blank" rel="noopener">
+              <div class="card-title">TCL华星子公司接手，华映这一参股公司福兆半导体卖了3,500万元</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span><span class="comp">TCL华星</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260624-61945.html" target="_blank" rel="noopener">
+              <div class="card-title">惠科南充M-LED芯片项目预计10月底完工</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">LEDinside</span><span class="comp">惠科 HKC</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212580.html" target="_blank" rel="noopener">
+              <div class="card-title">群创4月获利年增超26倍</div>
+              <div class="card-meta"><span class="date">2026-06-23</span><span class="src">液晶网</span><span class="comp">群创 Innolux</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-205323.html" target="_blank" rel="noopener">
+              <div class="card-title">总投资630亿元！国内首条！京东方第8.6代AMOLED生产线正式奠基</div>
+              <div class="card-meta"><span class="src">液晶网</span><span class="comp">京东方 BOE</span></div>
+            </a></div>
         </section>
 
         <section class="block" data-section="event">
           <h2>📰 行业大事件与趋势 <span class="count">12</span></h2>
           <div class="cards">
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212603.html" target="_blank" rel="noopener">
-                <div class="card-title">柏诚股份：签订3.59亿元印刷OLED生产线洁净包项目实施合同</div>
-                <div class="card-meta"><span class="date">2026-06-25</span><span class="src">液晶网</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212603.html" data-title="柏诚股份：签订3.59亿元印刷OLED生产线洁净包项目实施合同"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212593.html" target="_blank" rel="noopener">
-                <div class="card-title">东方科脉通过港股上市聆讯</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212593.html" data-title="东方科脉通过港股上市聆讯"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212594.html" target="_blank" rel="noopener">
-                <div class="card-title">天马供屏荣耀X80 Pro Max</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212594.html" data-title="天马供屏荣耀X80 Pro Max"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212598.html" target="_blank" rel="noopener">
-                <div class="card-title">消息称苹果将于7月下旬量产首款可折叠iPhone</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212598.html" data-title="消息称苹果将于7月下旬量产首款可折叠iPhone"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212597.html" target="_blank" rel="noopener">
-                <div class="card-title">消息称苹果考虑推出13.8英寸OLED面板，将用于MacBook</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212597.html" data-title="消息称苹果考虑推出13.8英寸OLED面板，将用于MacBook"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260624-61942.html" target="_blank" rel="noopener">
-                <div class="card-title">韩媒：苹果iPhone 18 Pro系列面板、可折叠OLED模组已开始生产</div>
-                <div class="card-meta"><span class="date">2026-06-24</span><span class="src">LEDinside</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260624-61942.html" data-title="韩媒：苹果iPhone 18 Pro系列面板、可折叠OLED模组已开始生产"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.fpdisplay.com/news/show-212581.html" target="_blank" rel="noopener">
-                <div class="card-title">彩晶5月净利2144万元</div>
-                <div class="card-meta"><span class="date">2026-06-23</span><span class="src">液晶网</span></div>
-              </a>
-              <div class="rate" data-id="https://www.fpdisplay.com/news/show-212581.html" data-title="彩晶5月净利2144万元"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260623-61938.html" target="_blank" rel="noopener">
-                <div class="card-title">澳洋顺昌光电BG蓝绿光共晶LED芯片量产供货国际头部显示品牌</div>
-                <div class="card-meta"><span class="date">2026-06-23</span><span class="src">LEDinside</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260623-61938.html" data-title="澳洋顺昌光电BG蓝绿光共晶LED芯片量产供货国际头部显示品牌"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260623-61937.html" target="_blank" rel="noopener">
-                <div class="card-title">中韩OLED新战场：8.6代线全面冲刺</div>
-                <div class="card-meta"><span class="date">2026-06-23</span><span class="src">LEDinside</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260623-61937.html" data-title="中韩OLED新战场：8.6代线全面冲刺"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.ledinside.cn/news/20260623-61936.html" target="_blank" rel="noopener">
-                <div class="card-title">中际旭创、光迅科技供应商北交所IPO获受理</div>
-                <div class="card-meta"><span class="date">2026-06-23</span><span class="src">LEDinside</span></div>
-              </a>
-              <div class="rate" data-id="https://www.ledinside.cn/news/20260623-61936.html" data-title="中际旭创、光迅科技供应商北交所IPO获受理"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="https://www.cena.com.cn/smartt/20260623/129048.html" target="_blank" rel="noopener">
-                <div class="card-title">在链博会，体会“看不见”的苹果生产线</div>
-                <div class="card-meta"><span class="date">2026-06-23</span><span class="src">中国电子报</span></div>
-              </a>
-              <div class="rate" data-id="https://www.cena.com.cn/smartt/20260623/129048.html" data-title="在链博会，体会“看不见”的苹果生产线"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div>
-            <div class="item">
-              <a class="card" href="http://www.semi-insights.com/s/equipment/20/50392.shtml" target="_blank" rel="noopener">
-                <div class="card-title">Manz亚智科技成功交付全球首台310mm × 310mm面板级封装ECD量产设备</div>
-                <div class="card-meta"><span class="src">半导体行业观察</span></div>
-              </a>
-              <div class="rate" data-id="http://www.semi-insights.com/s/equipment/20/50392.shtml" data-title="Manz亚智科技成功交付全球首台310mm × 310mm面板级封装ECD量产设备"><span class="lab">质量评分</span><span class="star" data-v="1">★</span><span class="star" data-v="2">★</span><span class="star" data-v="3">★</span><span class="star" data-v="4">★</span><span class="star" data-v="5">★</span></div>
-            </div></div>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61957.html" target="_blank" rel="noopener">
+              <div class="card-title">集创北方完成IPO辅导工作</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61955.html" target="_blank" rel="noopener">
+              <div class="card-title">ASML与荷兰应用科学研究院共建光芯片产线</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61953.html" target="_blank" rel="noopener">
+              <div class="card-title">洲明科技Micro LED屏下指纹专利获批</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61952.html" target="_blank" rel="noopener">
+              <div class="card-title">视爵光旭、奥拓电子参与LED虚拟拍摄项目建设</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260625-61951.html" target="_blank" rel="noopener">
+              <div class="card-title">总投资超6000万元，广东两项LED项目加快推进</div>
+              <div class="card-meta"><span class="date">2026-06-25</span><span class="src">LEDinside</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212593.html" target="_blank" rel="noopener">
+              <div class="card-title">东方科脉通过港股上市聆讯</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212594.html" target="_blank" rel="noopener">
+              <div class="card-title">天马供屏荣耀X80 Pro Max</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212598.html" target="_blank" rel="noopener">
+              <div class="card-title">消息称苹果将于7月下旬量产首款可折叠iPhone</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212597.html" target="_blank" rel="noopener">
+              <div class="card-title">消息称苹果考虑推出13.8英寸OLED面板，将用于MacBook</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">液晶网</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260624-61942.html" target="_blank" rel="noopener">
+              <div class="card-title">韩媒：苹果iPhone 18 Pro系列面板、可折叠OLED模组已开始生产</div>
+              <div class="card-meta"><span class="date">2026-06-24</span><span class="src">LEDinside</span></div>
+            </a>
+            <a class="card" href="https://www.fpdisplay.com/news/show-212581.html" target="_blank" rel="noopener">
+              <div class="card-title">彩晶5月净利2144万元</div>
+              <div class="card-meta"><span class="date">2026-06-23</span><span class="src">液晶网</span></div>
+            </a>
+            <a class="card" href="https://www.ledinside.cn/news/20260623-61938.html" target="_blank" rel="noopener">
+              <div class="card-title">澳洋顺昌光电BG蓝绿光共晶LED芯片量产供货国际头部显示品牌</div>
+              <div class="card-meta"><span class="date">2026-06-23</span><span class="src">LEDinside</span></div>
+            </a></div>
         </section>
-  <div class="expbar"><button class="expbtn" id="exportBtn">📋 导出我的评分</button></div>
-  <footer>聚焦 TV / 显示器 / 电子纸产业链 · 竞品动态与行业大事件优先 · 仅近 2 天 · 已跨天去重<br>给标题点 ★ 评分（1-5），点「导出我的评分」复制后发给我，用于迭代优化</footer>
+  <footer>聚焦 TV / 显示器 / 电子纸产业链 · 竞品动态与行业大事件优先 · 仅近 2 天 · 已跨天去重</footer>
 </div>
 <script>
   const btns=document.querySelectorAll('.f'), blocks=document.querySelectorAll('.block');
@@ -210,37 +143,6 @@
     const f=b.dataset.f;
     blocks.forEach(bl=>bl.style.display=(f==='all'||bl.dataset.section===f)?'':'none');
   });
-
-  // 仅本人可评分：URL 带密钥(?k=ADMIN_KEY 或 #ADMIN_KEY)才显示并启用评分；
-  // 员工用普通链接打开 = 干净看板、无评分控件。
-  const ADMIN_KEY = "ywq2026";
-  const _qp = new URLSearchParams(location.search);
-  if (ADMIN_KEY && (_qp.get('k') === ADMIN_KEY || location.hash.slice(1) === ADMIN_KEY)) {
-    document.body.classList.add('admin');
-    const FEEDBACK_URL = "";
-    const RPT_DATE = "2026年06月25日";
-    const paint=(r,v)=>r.querySelectorAll('.star').forEach(s=>s.classList.toggle('on',(+s.dataset.v)<=v));
-    document.querySelectorAll('.rate').forEach(r=>{
-      const id=r.dataset.id;
-      paint(r, +(localStorage.getItem('rate_'+id)||0));
-      r.querySelectorAll('.star').forEach(s=>s.onclick=()=>{
-        const v=+s.dataset.v;
-        localStorage.setItem('rate_'+id, v); paint(r, v);
-        if(FEEDBACK_URL){ fetch(FEEDBACK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({date:RPT_DATE,score:v,title:r.dataset.title,link:id})}).catch(()=>{}); }
-      });
-    });
-    const eb=document.getElementById('exportBtn');
-    if(eb) eb.onclick=()=>{
-      let lines=[];
-      document.querySelectorAll('.rate').forEach(r=>{
-        const v=localStorage.getItem('rate_'+r.dataset.id);
-        if(v) lines.push('★'+v+'  '+r.dataset.title);
-      });
-      const txt = lines.length ? ('显示日报评分反馈 · '+RPT_DATE+'\n'+lines.join('\n')) : '还没有评分，先给标题点 ★';
-      if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(()=>alert('已复制 '+lines.length+' 条评分，粘贴到对话发给我即可')).catch(()=>prompt('复制下面文本发给我：', txt)); }
-      else prompt('复制下面文本发给我：', txt);
-    };
-  }
 </script>
 </body>
 </html>
